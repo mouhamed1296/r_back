@@ -93,22 +93,23 @@ class CommandeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, $lid)
     {
         //
+        //return [$id, $lid];
         $commande = Commande::find($id);
         if ($commande) {
             $commande->update([
-                'numero' => $request->numero,
-                'nombreColis' => $request->nombreColis,
-                'poids' => $request->poids,
-                'dateEnregistrement' => $request->dateEnregistrement,
-                'lieuDepart' => $request->lieuDepart,
-                'lieuDestination' => $request->lieuDestination,
-                'Description' => $request->Description,
-                'residenceAdresse' => $request->residenceAdresse,
-                'envoyeur_id' => $request->envoyeur_id,
-                'livreur_id' => $request->livreur_id,
+                'numero' => $commande->numero,
+                'nombreColis' => $commande->nombreColis,
+                'poids' => $commande->poids,
+                'dateEnregistrement' => $commande->dateEnregistrement,
+                'lieuDepart' => $commande->lieuDepart,
+                'lieuDestination' => $commande->lieuDestination,
+                'Description' => $commande->Description,
+                'residenceAdresse' => $commande->residenceAdresse,
+                'envoyeur_id' => $commande->envoyeur_id,
+                'livreur_id' => $lid,
             ]);
             return response()->json([
                 'success' => 'Commande modifiée avec success',

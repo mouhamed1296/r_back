@@ -82,6 +82,7 @@ class AuthController extends Controller
     {
         $livreurs = User::where('roleCompte', 'livreur')
             ->join('personnes', 'users.personne_id', '=', 'personnes.id')
+            ->select('users.*', 'personnes.nom', 'personnes.prenom', 'personnes.telephone', 'personnes.disponibilite')
             ->orderBy('users.id')
             ->get();
         return $livreurs;
